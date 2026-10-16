@@ -20,6 +20,69 @@ function guard(e, url) {
 
 const tiktokUrl = CONFIG.redes.tiktok.url
 const redes = Object.entries(CONFIG.redes).map(([k, r]) => ({ key: k, ...r }))
+const offers = [
+  {
+    type: 'Curso',
+    title: 'Básico de Mediumnidad',
+    schedule: '1 mes · 4 clases · 1 hora y media por clase',
+    price: '$5.000',
+    description: 'Una introducción a la mediumnidad y al desarrollo de una práctica protegida.',
+    features: [
+      'Teoría y tipos de mediumnidad',
+      'Reconocimiento de arcángeles y guías',
+      'Protección energética e inicio y cierre de sesiones',
+      'Meditación y elevación del campo energético',
+      'Conexión con guías y arcángeles'
+    ],
+    note: 'Incluye material de estudio y prácticas guiadas.'
+  },
+  {
+    type: 'Curso',
+    title: 'Intermedio Intensivo de Mediumnidad',
+    schedule: '1 mes y medio · 7 clases · 1 hora y media por clase',
+    price: '$10.000',
+    description: 'Profundiza y fortalece las capacidades mediúmnicas, desarrollando claridad, sensibilidad y comprensión en la canalización.',
+    features: [
+      'Diferencia entre canalización y sugestión mental',
+      'Sensibilidad a la energía de personas y lugares',
+      'Canalización de personas: campo mental, emocional y físico',
+      'Canalización de objetos: historia y procedencia'
+    ],
+    note: 'Incluye material de estudio y prácticas guiadas en cada encuentro.'
+  },
+  {
+    type: 'Curso',
+    title: 'Avanzado Intensivo de Mediumnidad',
+    schedule: '2 meses · 10 clases · 1 hora y media por clase',
+    price: '$20.000',
+    description: 'Profundiza el trabajo mediúmnico y el manejo consciente de energías y entidades.',
+    features: [
+      'Conocer diferentes entidades',
+      'Canalizar lugares, percibir energías, entidades y objetos cargados',
+      'Crear una sala de espera para las energías',
+      'Conectar con seres fallecidos'
+    ],
+    note: 'Incluye material de estudio y prácticas guiadas.'
+  },
+  {
+    type: 'Plan',
+    title: 'Familiar Mensual',
+    schedule: 'Precio fijo mensual · sesiones de 30 minutos',
+    price: '$3.000',
+    description: 'Acompañamiento continuo y atención prioritaria para un grupo familiar de 2 o 3 personas.',
+    features: [
+      'Hasta 5 sesiones o atenciones al mes',
+      'Modalidad presencial, virtual o mixta',
+      'Espacio reservado y coordinación flexible',
+      'Consultas breves entre sesiones, opcionales',
+      'Gráficas de radiestesia, sello energético y canalizaciones',
+      'Orientaciones y descuentos en productos',
+      'Atención gratuita para los animales de los miembros',
+      'Chequeo de casa o comercio gratis'
+    ],
+    note: 'Plan mensual renovable. Las sesiones no utilizadas no se acumulan; cambios y cancelaciones deben coordinarse con anticipación. La limpieza de casa o comercio tiene costo aparte.'
+  }
+]
 
 /* ---------- videos ---------- */
 const videos = CONFIG.videos
@@ -48,6 +111,7 @@ function select(i, user) {
       </a>
       <nav class="nav" aria-label="Secciones">
         <a href="#videos">Videos</a>
+        <a href="#cursos">Cursos y planes</a>
         <a href="#redes">Redes</a>
         <a v-bind="linkAttrs(waLink())" @click="guard($event, waLink())">Contacto</a>
       </nav>
@@ -113,6 +177,32 @@ function select(i, user) {
             rel="noopener noreferrer"
           >Abrir este video en TikTok ↗</a>
         </div>
+      </div>
+    </section>
+
+    <section class="wrap block" id="cursos">
+      <div class="sec-head"><h2>Cursos y planes</h2></div>
+      <div class="offer-grid">
+        <article v-for="offer in offers" :key="offer.title" class="offer-card">
+          <div class="offer-meta">
+            <span class="offer-type">{{ offer.type }}</span>
+            <strong class="offer-price">{{ offer.price }}<small v-if="offer.type === 'Plan'"> / mes</small></strong>
+          </div>
+          <h3>{{ offer.title }}</h3>
+          <p class="offer-description">{{ offer.description }}</p>
+          <p class="offer-schedule">{{ offer.schedule }}</p>
+          <ul class="offer-list">
+            <li v-for="feature in offer.features" :key="feature">{{ feature }}</li>
+          </ul>
+          <p class="offer-note">{{ offer.note }}</p>
+          <a
+            class="btn btn-wa offer-cta"
+            v-bind="linkAttrs(waLink(`Hola Mauricio, quiero el ${offer.type.toLowerCase()} ${offer.title}.`))"
+            @click="guard($event, waLink(`Hola Mauricio, quiero el ${offer.type.toLowerCase()} ${offer.title}.`))"
+          >
+            Quiero el {{ offer.type.toLowerCase() }} {{ offer.title }}
+          </a>
+        </article>
       </div>
     </section>
 

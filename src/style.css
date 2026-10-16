@@ -189,6 +189,27 @@ h2::before{content:"✦";color:var(--gold);margin-right:.6rem;font-size:.7em;ver
 .soc b{font-size:.98rem;overflow-wrap:anywhere}
 .soc small{font-size:.78rem;color:var(--muted)}
 
+/* Cursos y planes */
+.offer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px;align-items:stretch}
+.offer-card{
+  display:flex;flex-direction:column;min-width:0;padding:20px;border-radius:16px;
+  background:var(--panel);border:1px solid var(--line);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  animation:rise .8s .15s both;
+}
+.offer-meta{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.offer-type{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-soft)}
+.offer-price{color:var(--gold-soft);font-family:var(--f-display);font-size:1.2rem;white-space:nowrap}
+.offer-price small{font-family:var(--f-body);font-size:.72rem;color:var(--muted);font-weight:400}
+.offer-card h3{margin:12px 0 8px;font-family:var(--f-display);font-size:1.15rem;line-height:1.35;font-weight:600;overflow-wrap:anywhere}
+.offer-description{margin:0;color:#c4cad8;font-size:.88rem}
+.offer-schedule{margin:12px 0;padding:8px 10px;border-block:1px solid var(--line);color:var(--gold-soft);font-size:.78rem;font-weight:600}
+.offer-list{display:grid;gap:7px;list-style:none;margin:0;padding:0;color:var(--muted);font-size:.82rem}
+.offer-list li{position:relative;padding-left:17px}
+.offer-list li::before{content:"✦";position:absolute;left:0;color:var(--gold);font-size:.72rem}
+.offer-note{margin:12px 0 16px;color:var(--muted);font-size:.78rem}
+.offer-cta{justify-content:center;width:100%;margin-top:auto;padding:11px 14px;border-radius:10px;text-align:center;font-size:.82rem;line-height:1.4}
+
 /* Pie */
 .foot{margin-top:2.5rem;border-top:1px solid var(--line);background:rgba(7,9,14,.85);text-align:center}
 .foot-in{padding-block:2.4rem;display:grid;gap:10px;justify-items:center}
